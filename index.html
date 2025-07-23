@@ -12,19 +12,21 @@
         return <h1>{title ? title : "Default Title"}</h1>;
       }
 
-      function handleClick() {
-        console.log("increment like count")
-      }
-
       function HomePage() {
+        const [likes, setLikes] = React.useState(0);
         const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+        
         return (
           <div>
             <Header title="Names"/>
             <ul>
               {names.map((name) => (<li key={name}>{name}</li>))}
             </ul>
-            <button onClick={handleClick}>Like</button>
+            <button onClick={handleClick}>Like({likes})</button>
           </div>
         );
       }
@@ -32,3 +34,11 @@
     </script>
   </body>
 </html>
+
+<!-- Decontructing above .useState() hook:
+      We are using array destructuring to take the result of the .useState Hook (which returns an array)
+      the nature of the order of args in the returned array is interesting.
+      1st Arg (can name it anything): the value
+      2nd Arg (can name it anything): a function to update the value, commonly named set<your value name>
+
+      Passing in a value to .useState() will assign that value to [value] -->
