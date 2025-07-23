@@ -9,20 +9,25 @@
       const root = ReactDOM.createRoot(app);
 
       function Header({ title }) {
-  return <h1>{title ? title : "Default Title"}</h1>;
-}
+        return <h1>{title ? title : "Default Title"}</h1>;
+      }
 
+      function handleClick() {
+        console.log("increment like count")
+      }
 
       function HomePage() {
-  return (
-    <div>
-      <Header title="React"/>
-      <Header title="React" />
-      <Header title="A new title" />
-    </div>
-  );
-}
-
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+        return (
+          <div>
+            <Header title="Names"/>
+            <ul>
+              {names.map((name) => (<li key={name}>{name}</li>))}
+            </ul>
+            <button onClick={handleClick}>Like</button>
+          </div>
+        );
+      }
       root.render(<HomePage />);
     </script>
   </body>
