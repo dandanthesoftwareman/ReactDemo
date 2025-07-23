@@ -8,14 +8,22 @@
       const app = document.getElementById("app");
       const root = ReactDOM.createRoot(app);
 
-      function Header() {
-        return <h1>Develop. Preview. Ship.</h1>;
-      }
+      function Header({ title }) {
+  return <h1>{createTitle(title)}</h1>;
+}
+
+      function createTitle(title) {
+  if (title) {
+    return title;
+  } else {
+    return 'Default title';
+  }
+}
 
       function HomePage() {
         return (
           <div>
-            <Header />
+            <Header title="React" />
           </div>
         );
       }
