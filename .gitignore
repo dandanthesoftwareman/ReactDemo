@@ -43,3 +43,4 @@
     *.bak
     *.swo
     *.swp
+node_modules
